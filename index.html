@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fran López — Director Comercial · Ciberseguridad & Transformación Digital</title>
+<meta name="description" content="Fran López — Director Comercial y de Operaciones. Analista informático Forense, Analista Ciberinteligencia, OSINT y Transformación Digital para empresas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { 950: '#f7f6f3', 900: '#f0efea', 800: '#e6e3dc', 700: '#dad6cc', 600: '#c7c2b4' },
+          bone: { 100: '#18181a', 200: '#26262a', 300: '#6b6b6b', 400: '#8f8f8f' },
+          brass: { 400: '#ff7a47', 500: '#ff5a1f', 600: '#e1450f' },
+        },
+        fontFamily: {
+          display: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+          sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body class="bg-ink-950 text-bone-200 font-sans antialiased">
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header id="siteHeader" class="fixed top-0 left-0 w-full z-40 header-shell">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
+    <a href="#top" class="relative inline-flex items-center p-2 -m-2 font-mono text-sm tracking-widest text-bone-100 hover-target">
+      <svg class="pulse-rings" width="72" height="72" viewBox="0 0 72 72" style="top:50%; left:50%; transform:translate(-50%,-50%);" aria-hidden="true">
+        <circle class="pulse-ring" cx="36" cy="36" r="16" style="animation-delay:0s"></circle>
+        <circle class="pulse-ring" cx="36" cy="36" r="16" style="animation-delay:1.1s"></circle>
+        <circle class="pulse-ring" cx="36" cy="36" r="16" style="animation-delay:2.2s"></circle>
+        <circle class="pulse-ring" cx="36" cy="36" r="16" style="animation-delay:3.3s"></circle>
+      </svg>
+      <span class="relative">FL<span class="text-brass-500">.</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-bone-300">
+      <a href="#perfil" class="nav-link hover-target py-2" data-section="perfil">Perfil</a>
+      <a href="#experiencia" class="nav-link hover-target py-2" data-section="experiencia">Experiencia</a>
+      <a href="#formacion" class="nav-link hover-target py-2" data-section="formacion">Formación</a>
+      <a href="#herramientas" class="nav-link hover-target py-2" data-section="herramientas">Herramientas</a>
+      <a href="#contacto" class="nav-link hover-target py-2" data-section="contacto">Contacto</a>
+    </nav>
+    <a href="mailto:willcask@proton.me" class="hover-target hidden md:inline-flex items-center gap-2 border border-ink-600 rounded-full px-4 py-3 text-xs font-mono uppercase tracking-widest text-bone-200 hover:border-brass-500 hover:text-brass-400 transition-colors">
+      Contactar
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden hero-grid">
+    <canvas id="netCanvas" class="absolute inset-0 w-full h-full opacity-60"></canvas>
+    <canvas id="waveformCanvas" aria-hidden="true"></canvas>
+    <div class="code-rain" id="codeRain" aria-hidden="true"></div>
+    <div class="absolute inset-0 hero-vignette"></div>
+
+    <div class="float-object hidden md:block" style="top:34%; right:5%; width:150px; height:150px;" data-speed="0.12" aria-hidden="true">
+      <div class="float-spin"><img src="src/assets/shield.png" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="float-object hidden md:block" style="bottom:12%; left:5%; width:120px; height:120px;" data-speed="0.06" aria-hidden="true">
+      <div class="float-spin float-spin-alt"><img src="src/assets/circuit.png" alt="" loading="lazy" decoding="async"></div>
+    </div>
+
+    <div class="hero-photo reveal-up absolute z-20 top-24 left-1/2 -translate-x-1/2 md:top-[6%] md:left-auto md:right-[6%] md:translate-x-0 w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36" style="transition-delay:.04s">
+      <img src="src/assets/fran-lopez.jpg" alt="Fran López" class="w-full h-full object-cover rounded-full ring-1 ring-ink-700 shadow-lg">
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 w-full pt-52 md:pt-20">
+      <p class="reveal-up font-mono text-xs md:text-sm tracking-[0.3em] uppercase text-bone-400 mb-6">
+        Business Development · Technology · Cybersecurity · Digital Transformation
+      </p>
+      <h1 class="hero-name reveal-up font-display font-medium leading-[0.95] text-5xl sm:text-6xl md:text-8xl text-bone-100" style="transition-delay:.08s">
+        Fran López
+      </h1>
+      <div class="reveal-up mt-6 h-8 md:h-10 overflow-hidden" style="transition-delay:.16s">
+        <p class="font-mono text-xs sm:text-base md:text-xl text-bone-300 whitespace-nowrap overflow-hidden">
+          <span id="roleType"></span><span class="type-caret">|</span>
+        </p>
+      </div>
+      <p class="reveal-up mt-6 max-w-xl text-bone-300 text-base md:text-lg leading-relaxed" style="transition-delay:.24s">
+        Más de 20 años dirigiendo negocio y equipos en telecomunicaciones, con formación especializada en
+        análisis informático Forense, ciberinteligencia e investigación OSINT. Fundador y CEO de dos compañías propias.
+      </p>
+
+      <div class="reveal-up mt-10 flex flex-wrap items-center gap-4" style="transition-delay:.32s">
+        <a href="#contacto" class="hover-target magnetic inline-flex items-center gap-2 bg-brass-500 text-ink-950 font-medium px-6 py-3 rounded-full text-sm hover:bg-brass-400 transition-colors">
+          Hablemos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#experiencia" class="hover-target magnetic inline-flex items-center gap-2 border border-ink-600 px-6 py-3 rounded-full text-sm text-bone-200 hover:border-brass-500 hover:text-brass-500 transition-colors">
+          Ver trayectoria
+        </a>
+        <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-bone-300 ml-2">
+          <span class="status-dot"></span> Disponible · Remoto / Híbrido
+        </span>
+      </div>
+    </div>
+
+    <a href="#perfil" class="hover-target absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-bone-300">
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+      <span class="scroll-cue"></span>
+    </a>
+  </section>
+
+  <!-- PERFIL -->
+  <section id="perfil" class="relative py-28 md:py-36 border-t border-ink-800">
+    <div class="float-object hidden md:block" style="top:6%; right:4%; width:110px; height:110px;" data-speed="0.05" aria-hidden="true">
+      <div class="float-spin"><img src="src/assets/padlock.png" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-4">
+          <p class="section-index">01</p>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Perfil</h2>
+        </div>
+        <div class="md:col-span-8">
+          <p class="reveal text-lg md:text-xl leading-relaxed text-bone-200">
+            Director comercial y de operaciones con más de <strong class="text-brass-400 font-medium">20 años</strong>
+            de experiencia en telecomunicaciones y venta consultiva B2B, y formación especializada reciente en
+            ciberseguridad, ciberinteligencia e investigación OSINT.
+          </p>
+          <p class="reveal mt-5 text-lg md:text-xl leading-relaxed text-bone-300" style="transition-delay:.1s">
+            Diseño planes directores de seguridad, lidero equipos comerciales y ayudo a pymes a digitalizarse
+            sin perder de vista el riesgo. Fundador y CEO de dos compañías propias. Perfil bilingüe orientado
+            a resultados.
+          </p>
+
+          <div class="reveal mt-12 grid grid-cols-3 gap-3 md:gap-10" style="transition-delay:.15s">
+            <div class="stat-block">
+              <p class="stat-number font-display text-2xl md:text-5xl text-bone-100"><span data-count="20">0</span>+</p>
+              <p class="stat-label">años de experiencia</p>
+            </div>
+            <div class="stat-block">
+              <p class="stat-number font-display text-2xl md:text-5xl text-bone-100"><span data-count="2">0</span></p>
+              <p class="stat-label">compañías fundadas</p>
+            </div>
+            <div class="stat-block">
+              <p class="stat-number font-display text-2xl md:text-5xl text-bone-100"><span data-count="1450">0</span>+</p>
+              <p class="stat-label">clientes activos</p>
+            </div>
+          </div>
+
+          <div class="reveal mt-12 flex flex-wrap gap-2.5" style="transition-delay:.2s">
+            <span class="keyword-chip">Ciberseguridad</span>
+            <span class="keyword-chip">Ciberinteligencia</span>
+            <span class="keyword-chip">OSINT</span>
+            <span class="keyword-chip">DFIR</span>
+            <span class="keyword-chip">RGPD</span>
+            <span class="keyword-chip">Plan Director de Seguridad</span>
+            <span class="keyword-chip">Threat Intelligence</span>
+            <span class="keyword-chip">Venta Consultiva B2B</span>
+            <span class="keyword-chip">Desarrollo de Negocio</span>
+            <span class="keyword-chip">Dirección de Equipos</span>
+            <span class="keyword-chip">Gestión de Cuentas Clave</span>
+            <span class="keyword-chip">Social CRM</span>
+            <span class="keyword-chip">Inbound Marketing</span>
+            <span class="keyword-chip">Transformación Digital</span>
+            <span class="keyword-chip">Telecomunicaciones Empresariales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BREAK -->
+  <div class="quote-break reveal">
+    <p class="quote-text">La única forma de mantener un secreto es no tenerlo.</p>
+    <p class="quote-author">— Bruce Schneier</p>
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia" class="relative py-28 md:py-36 border-t border-ink-800 bg-ink-900/40">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="mb-16">
+        <p class="section-index">02</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Experiencia</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"><div class="timeline-line-fill" id="timelineFill"></div></div>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-2">Abr. 2024 — Presente</p>
+            <h3 class="font-display text-xl md:text-2xl text-bone-100">COO</h3>
+            <p class="text-sm text-bone-300 mb-4">Infinity Tech | Distribuidor Vodafone Business</p>
+            <p class="text-bone-300 leading-relaxed">
+              Dirección comercial y técnica en telecomunicaciones, digitalización y ciberseguridad. Diseño e
+              implementación de un servicio de Plan Director de Ciberseguridad para pymes.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-6">
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="1200">0</span></p><p class="stat-label">clientes activos</p></div>
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="35">0</span>%</p><p class="stat-label">adopción primer año</p></div>
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="15">0</span>%</p><p class="stat-label">crecimiento cartera empresarial</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-2">Jul. 2017 — Presente</p>
+            <h3 class="font-display text-xl md:text-2xl text-bone-100">CEO / Fundador</h3>
+            <p class="text-sm text-bone-300 mb-4">Nebulosa Digital | Agencia de marketing digital y tecnología</p>
+            <p class="text-bone-300 leading-relaxed">
+              Marketing y tecnología para pymes, autónomos y despachos profesionales: bots de WhatsApp,
+              automatizaciones, landing pages e IA aplicada. Estrategias de Social CRM e Inbound Marketing.
+              Organizador de Congreso de Tecnología, Marketing Digital y eCommerce.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-6">
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="250">0</span></p><p class="stat-label">clientes activos</p></div>
+              <div><p class="font-display text-2xl text-brass-400">€<span data-count="150000">0</span></p><p class="stat-label">facturación media anual</p></div>
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="30">0</span>%</p><p class="stat-label">conversión de leads</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-2">Ago. 2016 — Abr. 2024</p>
+            <h3 class="font-display text-xl md:text-2xl text-bone-100">Head of Sales</h3>
+            <p class="text-sm text-bone-300 mb-4">Connect Gold | Distribuidor autorizado Vodafone Business</p>
+            <p class="text-bone-300 leading-relaxed">
+              Dirección y desarrollo de un equipo comercial de 25 profesionales, gestión estratégica de cuentas empresariales y comercialización de soluciones y servicios del segmento Corporate.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-6">
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="25">0</span></p><p class="stat-label">personas en el equipo</p></div>
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="100">0</span>+</p><p class="stat-label">clientes empresariales</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-2">Jun. 2006 — Jul. 2017</p>
+            <h3 class="font-display text-xl md:text-2xl text-bone-100">Head of Commercial Operations</h3>
+            <p class="text-sm text-bone-300 mb-1">Soluciones Móviles del Sur | Distribuidor Homologado Orange Empresas</p>
+            
+            <p class="text-bone-300 leading-relaxed">
+              Dirección y coordinación de equipos comerciales, gestión de cartera y desarrollo de procedimientos de seguimiento y fidelización postventa.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-2">Ene. 2003 — May. 2009</p>
+            <h3 class="font-display text-xl md:text-2xl text-bone-100">Business Development Director</h3>
+            <p class="text-sm text-bone-300 mb-4">PCG Despachos SL | Distribuidor de Software de gestión asesorías, gestorías y despachos legales</p>
+            <p class="text-bone-300 leading-relaxed">
+              Desarrollo de negocio en despachos profesionales, realizando la implantación, configuración y formación de usuarios en soluciones de software de gestión.
+            </p>
+            <div class="mt-5">
+              <div><p class="font-display text-2xl text-brass-400"><span data-count="1500">0</span></p><p class="stat-label">nuevas cuentas captadas</p></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMACION -->
+  <section id="formacion" class="relative py-28 md:py-36 border-t border-ink-800">
+    <div class="float-object hidden md:block" style="bottom:6%; left:3%; width:110px; height:110px;" data-speed="0.07" aria-hidden="true">
+      <div class="float-spin float-spin-alt"><img src="src/assets/server.png" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="mb-16">
+        <p class="section-index">03</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Formación &amp; Certificaciones</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-16">
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 reveal">Formación Académica</h3>
+          <ul class="space-y-6">
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Experto Universitario en Peritaje Informático e Informática Forense</p>
+              <p class="text-sm text-bone-400 mt-1">UNIR · 2022</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Máster en Ciberinteligencia</p>
+              <p class="text-sm text-bone-400 mt-1">Campus Internacional de Ciberseguridad · 2023–2024</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Investigación en Fuentes Abiertas (OSINT)</p>
+              <p class="text-sm text-bone-400 mt-1">Campus Internacional de Ciberseguridad · 2023</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Marketing Expert</p>
+              <p class="text-sm text-bone-400 mt-1">ThePowerDigitalMarketing · 2019–2021</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Escuela Superior de Ventas, Venta Consultiva</p>
+              <p class="text-sm text-bone-400 mt-1">ESIC Business &amp; Marketing School · 2010–2013</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Diplomatura en Magisterio</p>
+              <p class="text-sm text-bone-400 mt-1">Universidad de Almería · 1995–2000</p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 reveal">Certificaciones</h3>
+          <ul class="space-y-6">
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Consultor de Soluciones Avanzadas</p>
+              <p class="text-sm text-bone-400 mt-1">Vodafone Business · 2016</p>
+            </li>
+            <li class="edu-card reveal">
+              <p class="font-display text-lg text-bone-100">Servicio de Fijos Avanzados</p>
+              <p class="text-sm text-bone-400 mt-1">Orange Empresas · 2015</p>
+            </li>
+          </ul>
+
+          <h3 class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 mt-14 reveal">Idiomas</h3>
+          <div class="space-y-5">
+            <div class="lang-row reveal">
+              <div class="flex justify-between text-sm mb-2"><span class="text-bone-100">Español</span><span class="text-bone-400 font-mono text-xs">Nativo</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="100"></div></div>
+            </div>
+            <div class="lang-row reveal">
+              <div class="flex justify-between text-sm mb-2"><span class="text-bone-100">Gallego</span><span class="text-bone-400 font-mono text-xs">B2</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="68"></div></div>
+            </div>
+            <div class="lang-row reveal">
+              <div class="flex justify-between text-sm mb-2"><span class="text-bone-100">Inglés</span><span class="text-bone-400 font-mono text-xs">B1</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="50"></div></div>
+            </div>
+            <div class="lang-row reveal">
+              <div class="flex justify-between text-sm mb-2"><span class="text-bone-100">Catalán</span><span class="text-bone-400 font-mono text-xs">B1</span></div>
+              <div class="lang-bar"><div class="lang-fill" data-fill="50"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BREAK -->
+  <div class="quote-break reveal">
+    <p class="quote-text">   Yo hago lo imposible, porque lo posible lo hace cualquiera.</p>
+    <p class="quote-author">   — Pablo Picasso</p>
+  </div>
+
+  <!-- HERRAMIENTAS -->
+  <section id="herramientas" class="relative py-28 md:py-36 border-t border-ink-800 bg-ink-900/40">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="mb-16">
+        <p class="section-index">04</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Herramientas &amp; Técnicas</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="tool-group reveal">
+          <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-4">Forense Digital</p>
+          <ul class="space-y-3">
+            <li class="tool-item">Autopsy</li>
+            <li class="tool-item">FTK Imager</li>
+            <li class="tool-item">Avilla Forensics</li>
+          </ul>
+        </div>
+        <div class="tool-group reveal" style="transition-delay:.08s">
+          <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-4">Sistemas &amp; Distribuciones</p>
+          <ul class="space-y-3">
+            <li class="tool-item">Kali Linux</li>
+            <li class="tool-item">Parrot OS</li>
+            <li class="tool-item">Deft-Zero</li>
+            <li class="tool-item">VirtualBox / VMware</li>
+          </ul>
+        </div>
+        <div class="tool-group reveal" style="transition-delay:.16s">
+          <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-4">Investigación</p>
+          <ul class="space-y-3">
+            <li class="tool-item">Técnicas OSINT</li>
+            <li class="tool-item">Threat Intelligence</li>
+            <li class="tool-item">DFIR</li>
+            <li class="tool-item">Navegación DeepWeb / DarkWeb</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="relative py-28 md:py-40 border-t border-ink-800 overflow-hidden">
+    <canvas id="netCanvas2" class="absolute inset-0 w-full h-full opacity-40"></canvas>
+    <div class="float-object hidden md:block" style="top:10%; right:8%; width:130px; height:130px;" data-speed="0.04" aria-hidden="true">
+      <div class="float-spin"><img src="src/assets/lens.png" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 text-center">
+      <p class="section-index !mx-auto reveal">05 — Contacto</p>
+      <h2 class="reveal font-display text-4xl md:text-6xl text-bone-100 max-w-3xl mx-auto leading-tight">
+        Construyamos algo con criterio y sin dejar de mirar el riesgo.
+      </h2>
+      <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.1s">
+        <a href="mailto:willcask@proton.me" class="hover-target magnetic inline-flex items-center gap-3 bg-brass-500 text-ink-950 font-medium px-8 py-4 rounded-full text-base hover:bg-brass-400 transition-colors">
+          willcask@proton.me
+        </a>
+        <a href="https://www.linkedin.com/in/franciscomanuellopezmartin/" target="_blank" rel="noopener" class="hover-target magnetic inline-flex items-center gap-2 border border-ink-600 px-8 py-4 rounded-full text-base text-bone-200 hover:border-brass-500 hover:text-brass-500 transition-colors">
+          LinkedIn ↗
+        </a>
+      </div>
+      <p class="reveal mt-8 font-mono text-xs uppercase tracking-widest text-bone-400" style="transition-delay:.18s">
+        Andalucía, España · Disponibilidad: Remoto / Híbrido
+      </p>
+    </div>
+  </section>
+
+  <footer class="border-t border-ink-800 py-8">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs text-bone-400">
+      <span>© 2026 Fran López</span>
+      <span>Ciberseguridad · Telecomunicaciones · Transformación Digital</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="src/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+/* ---------- Base ---------- */
+::selection { background: #ff5a1f; color: #f7f6f3; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  cursor: default;
+  overflow-x: hidden;
+}
+
+/* ---------- Progress bar ---------- */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: #ff5a1f;
+  z-index: 60;
+  transition: width 0.1s linear;
+}
+
+/* ---------- Header ---------- */
+.header-shell {
+  background: rgba(247, 246, 243, 0);
+  border-bottom: 1px solid transparent;
+  transition: background-color .4s ease, border-color .4s ease;
+  /* header is fixed + full-width, so contain the pulse-rings SVG (72px,
+     absolutely centered on the small logo near the left edge) here rather
+     than relying only on html/body overflow-x:hidden. */
+  overflow-x: hidden;
+}
+.header-shell.is-scrolled {
+  background: rgba(247, 246, 243, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom-color: #dad6cc;
+}
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+  color: inherit;
+  transition: color .25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 1px; width: 0;
+  background: #ff5a1f;
+  transition: width .3s ease;
+}
+.nav-link:hover, .nav-link.active { color: #18181a; }
+.nav-link.active::after { width: 100%; }
+
+/* ---------- Custom cursor ---------- */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 70;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.cursor-dot { width: 6px; height: 6px; background: #ff5a1f; transition: opacity .2s ease; }
+.cursor-ring {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255, 90, 31, 0.5);
+  transition: width .2s ease, height .2s ease, opacity .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.cursor-ring.is-active {
+  width: 54px; height: 54px;
+  background: rgba(255, 90, 31, 0.08);
+  border-color: rgba(225, 69, 15, 0.6);
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(24,24,26,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,24,26,0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  background-position: center top;
+  /* Overrides Tailwind's min-h-screen (min-height:100vh). On real mobile
+     browsers 100vh includes the space behind the address bar, causing
+     overflow/clipping that isn't visible in the desktop emulator. 100dvh
+     tracks the actual visible viewport; the 100vh line stays first as a
+     fallback for browsers that don't support dvh (they ignore the second
+     declaration and keep this one). */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.hero-vignette {
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(247,246,243,0) 0%, rgba(247,246,243,0.5) 60%, #f7f6f3 100%);
+}
+#netCanvas, #netCanvas2 { pointer-events: none; }
+
+.type-caret {
+  color: #6b6b6b;
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ff5a1f;
+  box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.6);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 90, 31, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 90, 31, 0); }
+}
+
+.scroll-cue {
+  width: 1px; height: 40px;
+  background: linear-gradient(#8f8f8f, transparent);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-cue::after {
+  content: '';
+  position: absolute;
+  top: -40px; left: 0;
+  width: 100%; height: 40px;
+  background: linear-gradient(transparent, #6b6b6b, transparent);
+  animation: scrollcue 1.8s ease-in-out infinite;
+}
+@keyframes scrollcue { to { top: 40px; } }
+
+/* ---------- Reveal animations ---------- */
+.reveal, .reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.is-visible, .reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Section headers ---------- */
+.section-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8f8f8f;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Stats ---------- */
+.stat-block { border-left: 1px solid #dad6cc; padding-left: 1rem; }
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8f8f8f;
+  margin-top: 0.35rem;
+}
+@media (max-width: 768px) {
+  .stat-block { padding-left: 0.5rem; }
+}
+
+/* ---------- Keyword chips ---------- */
+.keyword-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: #6b6b6b;
+  border: 1px solid #dad6cc;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  transition: border-color .25s ease, color .25s ease, transform .25s ease;
+}
+.keyword-chip:hover {
+  border-color: #ff5a1f;
+  color: #e1450f;
+  transform: translateY(-2px);
+}
+
+/* ---------- Timeline ---------- */
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline-line {
+  position: absolute;
+  left: 5px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: #dad6cc;
+}
+.timeline-line-fill {
+  width: 100%; height: 0%;
+  background: #ff5a1f;
+  transition: height .2s linear;
+}
+.timeline-item { position: relative; margin-bottom: 3.5rem; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -2.5rem; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #f0efea;
+  border: 2px solid #dad6cc;
+  transition: border-color .4s ease, background-color .4s ease, box-shadow .4s ease;
+}
+.timeline-item.is-visible .timeline-dot {
+  border-color: #ff5a1f;
+  background: #ff5a1f;
+  box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.15);
+}
+.timeline-card {
+  background: #fbfaf8;
+  border: 1px solid #e6e3dc;
+  border-radius: 1rem;
+  padding: 1.75rem 2rem;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: #dad6cc;
+  box-shadow: 0 16px 40px -20px rgba(24,24,26,0.16);
+}
+@media (max-width: 768px) {
+  .timeline { padding-left: 1.75rem; }
+  .timeline-dot { left: -1.75rem; }
+  .timeline-card { padding: 1.5rem 1.25rem; }
+}
+
+/* ---------- Education cards ---------- */
+.edu-card {
+  border-left: 2px solid #dad6cc;
+  padding-left: 1.25rem;
+  transition: border-color .3s ease, transform .3s ease;
+}
+.edu-card:hover { border-color: #ff5a1f; transform: translateX(4px); }
+
+/* ---------- Language bars ---------- */
+.lang-bar {
+  width: 100%; height: 6px;
+  background: #e6e3dc;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.lang-fill {
+  height: 100%; width: 0%;
+  background: #ff5a1f;
+  border-radius: 999px;
+  transition: width 1.4s cubic-bezier(.16,1,.3,1);
+}
+
+/* ---------- Tools ---------- */
+.tool-group {
+  background: #fbfaf8;
+  border: 1px solid #e6e3dc;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: border-color .3s ease, transform .3s ease;
+}
+.tool-group:hover { border-color: #dad6cc; transform: translateY(-3px); }
+.tool-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: #6b6b6b;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.tool-item::before {
+  content: '›';
+  position: absolute;
+  left: 0; color: #ff5a1f;
+}
+
+/* ---------- Quote break (editorial transition between sections) ---------- */
+.quote-break {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+.quote-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b6b6b;
+  overflow-wrap: break-word;
+}
+.quote-author {
+  margin-top: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: #8f8f8f;
+}
+@media (min-width: 768px) {
+  .quote-break { padding: 5rem 1.5rem; }
+  .quote-text { font-size: 1.1rem; }
+}
+@media (max-width: 768px) {
+  .quote-break { padding: 3rem 20px; }
+  .quote-text { font-size: 0.95rem; }
+}
+@media (max-width: 480px) {
+  .quote-break { padding: 2.5rem 20px; }
+  .quote-text { font-size: 0.85rem; }
+  .quote-author { font-size: 0.62rem; }
+}
+
+/* ---------- Hero (mobile layout) ----------
+   .hero-photo stays absolute + centered (top-24 left-1/2 -translate-x-1/2 from
+   index.html) so it renders above the text without depending on the Tailwind
+   Play CDN's md: breakpoint resolving correctly on the device. Only the name
+   size is tuned here since overriding position/display would fight the
+   section's flex layout. */
+@media (max-width: 768px) {
+  .hero-name { font-size: clamp(2.5rem, 11vw, 3.75rem); }
+}
+@media (max-width: 480px) {
+  .hero-name { font-size: clamp(2rem, 13vw, 2.5rem); }
+}
+
+/* ---------- Keyword chips (mobile wrap) ---------- */
+@media (max-width: 480px) {
+  .keyword-chip {
+    font-size: 0.66rem;
+    padding: 0.35rem 0.7rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ---------- Magnetic buttons ---------- */
+.magnetic { will-change: transform; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f0efea; }
+::-webkit-scrollbar-thumb { background: #dad6cc; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #c7c2b4; }
+
+/* ---------- Floating 3D objects (parallax) ---------- */
+/* .float-object: outer wrapper, positioned + JS-driven scroll parallax (translateY). */
+/* .float-spin: inner wrapper, CSS-driven continuous slow bob + rotation. Kept separate so the two transforms never fight over the same property. */
+.float-object {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+  perspective: 800px;
+}
+.float-spin {
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 20px 30px rgba(24, 24, 26, 0.12));
+  animation: floatSpin 14s ease-in-out infinite;
+}
+.float-spin.float-spin-alt {
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+.float-object img { width: 100%; height: 100%; object-fit: contain; }
+@keyframes floatSpin {
+  0%   { transform: translateY(0) rotate3d(0.4, 1, 0.2, 0deg); }
+  50%  { transform: translateY(-22px) rotate3d(0.4, 1, 0.2, 12deg); }
+  100% { transform: translateY(0) rotate3d(0.4, 1, 0.2, 0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-spin { animation: none; }
+}
+@media (max-width: 768px) {
+  .float-object { display: none; }
+}
+
+/* ---------- Ambient effect: waveform canvas ---------- */
+#waveformCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---------- Ambient effect: ascending code columns ---------- */
+.code-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 4%;
+}
+.code-column {
+  flex: 1;
+  align-self: flex-start;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  color: rgba(24, 24, 26, 0.14);
+  white-space: pre;
+  animation-name: codeRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes codeRise {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+/* ---------- Ambient effect: pulsing concentric rings ---------- */
+.pulse-rings {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+}
+.pulse-ring {
+  fill: none;
+  stroke: rgba(255, 90, 31, 0.5);
+  stroke-width: 1.25;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pulseRing 4.5s ease-out infinite;
+}
+@keyframes pulseRing {
+  0%   { opacity: .6; transform: scale(0.5); }
+  70%  { opacity: 0; transform: scale(1.25); }
+  100% { opacity: 0; transform: scale(1.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-column { animation: none; }
+  .pulse-ring { animation: none; opacity: .3; transform: scale(0.85); }
+}
+@media (max-width: 768px) {
+  .pulse-rings { width: 48px; height: 48px; }
+}
+
+/* ---------- Ambient effects: quiet down under 480px to kill visual noise / avoid side-scroll risk ---------- */
+@media (max-width: 480px) {
+  .code-rain { opacity: 0.4; }
+  #waveformCanvas { opacity: 0.35; }
+  .pulse-rings { display: none; }
+}
