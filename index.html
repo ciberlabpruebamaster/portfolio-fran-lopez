@@ -52,6 +52,7 @@
     <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-bone-300">
       <a href="#perfil" class="nav-link hover-target py-2" data-section="perfil">Perfil</a>
       <a href="#experiencia" class="nav-link hover-target py-2" data-section="experiencia">Experiencia</a>
+      <a href="#osint" class="nav-link hover-target py-2" data-section="osint">OSINT Forense</a>
       <a href="#encaje" class="nav-link hover-target py-2" data-section="encaje">Dónde encajo</a>
       <a href="#formacion" class="nav-link hover-target py-2" data-section="formacion">Formación</a>
       <a href="#herramientas" class="nav-link hover-target py-2" data-section="herramientas">Herramientas</a>
@@ -96,8 +97,7 @@
         </p>
       </div>
       <p class="reveal-up mt-6 max-w-xl text-bone-300 text-base md:text-lg leading-relaxed" style="transition-delay:.24s">
-        Más de 20 años dirigiendo negocio y equipos en telecomunicaciones, con formación especializada en
-        análisis informático Forense, ciberinteligencia e investigación OSINT. Fundador y CEO de dos compañías propias.
+        Construyo negocio y protejo el de mis clientes: liderazgo comercial y estrategia por un lado, investigación OSINT y análisis forense por otro, con una trayectoria sólida resolviendo casos reales.
       </p>
 
       <div class="reveal-up mt-10 flex flex-wrap items-center gap-4" style="transition-delay:.32s">
@@ -133,14 +133,13 @@
         </div>
         <div class="md:col-span-8">
           <p class="reveal text-lg md:text-xl leading-relaxed text-bone-200">
-            Director comercial y de operaciones con más de <strong class="text-brass-400 font-medium">20 años</strong>
-            de experiencia en telecomunicaciones y venta consultiva B2B, y formación especializada reciente en
-            ciberseguridad, ciberinteligencia e investigación OSINT.
+            Combino <strong class="text-brass-400 font-medium">ventas, gestión de equipos y estrategia de negocio</strong> con una línea activa de
+            <strong class="text-brass-400 font-medium">investigación OSINT y análisis forense</strong> aplicados a un volumen constante de casos reales.
           </p>
           <p class="reveal mt-5 text-lg md:text-xl leading-relaxed text-bone-300" style="transition-delay:.1s">
-            Diseño planes directores de seguridad, lidero equipos comerciales y ayudo a pymes a digitalizarse
-            sin perder de vista el riesgo. Fundador y CEO de dos compañías propias. Perfil bilingüe orientado
-            a resultados.
+            Diseño planes directores de seguridad, lidero equipos comerciales, gestiono marketing y diseño
+            digital para pymes, y ayudo a empresas a digitalizarse sin perder de vista el riesgo. Fundador y
+            CEO de dos compañías propias. Perfil bilingüe orientado a resultados.
           </p>
 
           <div class="reveal mt-12 grid grid-cols-3 gap-3 md:gap-10" style="transition-delay:.15s">
@@ -174,6 +173,11 @@
             <span class="keyword-chip">Inbound Marketing</span>
             <span class="keyword-chip">Transformación Digital</span>
             <span class="keyword-chip">Telecomunicaciones Empresariales</span>
+            <span class="keyword-chip">WHOIS</span>
+            <span class="keyword-chip">Análisis de cabeceras de correo</span>
+            <span class="keyword-chip">SPF/DKIM/DMARC</span>
+            <span class="keyword-chip">Metadatos forenses</span>
+            <span class="keyword-chip">Dark Web</span>
           </div>
 
           <div class="reveal mt-14 statement" style="transition-delay:.25s">
@@ -198,9 +202,12 @@
   <!-- EXPERIENCIA -->
   <section id="experiencia" class="relative py-28 md:py-36 border-t border-ink-800 bg-ink-900/40">
     <div class="max-w-6xl mx-auto px-6 md:px-10">
-      <div class="mb-16">
-        <p class="section-index">02</p>
-        <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Experiencia</h2>
+      <div class="relative mb-16">
+        <canvas id="waveformExperiencia" class="section-waveform" aria-hidden="true"></canvas>
+        <div class="relative z-10">
+          <p class="section-index">02</p>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Experiencia</h2>
+        </div>
       </div>
 
       <div class="timeline">
@@ -290,11 +297,84 @@
     </div>
   </section>
 
+  <!-- INVESTIGACION OSINT & ANALISIS FORENSE -->
+  <section id="osint" class="relative py-28 md:py-36 border-t border-ink-800">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="relative mb-16">
+        <canvas id="waveformOsint" class="section-waveform" aria-hidden="true"></canvas>
+        <div class="relative z-10">
+          <p class="section-index">03</p>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Investigación OSINT &amp; Análisis Forense</h2>
+        </div>
+      </div>
+
+      <div class="reveal mb-16">
+        <p class="stat-number font-display text-4xl md:text-6xl text-bone-100"><span data-count="300">0</span>+</p>
+        <p class="mt-3 max-w-2xl text-lg md:text-xl text-bone-300 leading-relaxed">
+          casos de investigación OSINT y análisis forense gestionados para clientes reales.
+        </p>
+      </div>
+
+      <div class="mb-16">
+        <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 reveal">Capacidades aplicadas: Forense</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="capability-card reveal flex items-start gap-3"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis forense de ordenadores, servidores y móviles</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.03s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Recuperación de información eliminada</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.06s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis forense de correos electrónicos (cabeceras, SPF/DKIM/DMARC)</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.09s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación de accesos no autorizados</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.12s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Preservación de evidencias y cadena de custodia</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.15s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Elaboración de informes periciales</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.18s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación de empresas y personas</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.21s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Monitorización de marca y reputación</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.24s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Detección de filtraciones y exposición de datos</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.27s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación en Deep Web y Dark Web</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.3s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Detección de fraude y suplantaciones</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.33s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Geolocalización y análisis de imágenes</span></div>
+        </div>
+      </div>
+
+      <div class="mb-16">
+        <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 reveal">Capacidades aplicadas: OSINT / Ciberinteligencia</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="capability-card reveal flex items-start gap-3"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación de empresas y personas</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.03s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis de competencia y mercado</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.06s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Búsqueda y análisis de información pública</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.09s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación de dominios, IP e infraestructura</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.12s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis de huella digital</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.15s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Monitorización de marca y reputación</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.18s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Detección de filtraciones y exposición de datos</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.21s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación de perfiles y redes sociales</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.24s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis de amenazas y actores</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.27s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Threat Intelligence</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.3s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Investigación en Deep Web y Dark Web</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.33s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Verificación y contraste de información</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.36s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Geolocalización y análisis de imágenes</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.39s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Detección de fraude y suplantaciones</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.42s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis de relaciones y vínculos</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.45s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Elaboración de informes de inteligencia</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.48s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Apoyo a ciberseguridad y toma de decisiones</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-bone-400 mb-6 reveal">Otras capacidades aplicadas</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="capability-card reveal flex items-start gap-3"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Threat Intelligence</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.03s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Dark Web</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.06s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Search engines for OSINT</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.09s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Dorks</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.12s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Emuladores - SO</span></div>
+          <div class="capability-card reveal flex items-start gap-3" style="transition-delay:.15s"><span class="capability-icon">›</span><span class="text-sm text-bone-200 leading-snug">Análisis de reputación de URL e IP</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- DONDE ENCAJO -->
   <section id="encaje" class="relative py-28 md:py-36 border-t border-ink-800">
     <div class="max-w-6xl mx-auto px-6 md:px-10">
       <div class="mb-16">
-        <p class="section-index">03</p>
+        <p class="section-index">04</p>
         <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Dónde encajo</h2>
       </div>
 
@@ -338,7 +418,7 @@
     </div>
     <div class="max-w-6xl mx-auto px-6 md:px-10">
       <div class="mb-16">
-        <p class="section-index">04</p>
+        <p class="section-index">05</p>
         <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Formación &amp; Certificaciones</h2>
       </div>
 
@@ -420,7 +500,7 @@
   <section id="herramientas" class="relative py-28 md:py-36 border-t border-ink-800 bg-ink-900/40">
     <div class="max-w-6xl mx-auto px-6 md:px-10">
       <div class="mb-16">
-        <p class="section-index">05</p>
+        <p class="section-index">06</p>
         <h2 class="font-display font-bold text-3xl md:text-4xl text-brass-500 reveal">Herramientas &amp; Técnicas</h2>
       </div>
 
@@ -462,15 +542,16 @@
       <div class="float-spin"><img src="src/assets/lens.png" alt="" loading="lazy" decoding="async"></div>
     </div>
     <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 text-center">
-      <p class="section-index !mx-auto reveal">06 — Contacto</p>
+      <p class="section-index !mx-auto reveal">07 — Contacto</p>
       <h2 class="reveal font-display text-4xl md:text-6xl text-bone-100 max-w-3xl mx-auto leading-tight">
         Construyamos algo con criterio y sin dejar de mirar el riesgo.
       </h2>
-      <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.1s">
-        <a href="mailto:willcask@proton.me" class="hover-target magnetic inline-flex items-center gap-3 bg-brass-500 text-ink-950 font-medium px-8 py-4 rounded-full text-base hover:bg-brass-400 transition-colors">
+      <div class="relative reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.1s">
+        <canvas id="waveformContacto" class="section-waveform" aria-hidden="true"></canvas>
+        <a href="mailto:willcask@proton.me" class="hover-target magnetic relative z-10 inline-flex items-center gap-3 bg-brass-500 text-ink-950 font-medium px-8 py-4 rounded-full text-base hover:bg-brass-400 transition-colors">
           willcask@proton.me
         </a>
-        <a href="https://www.linkedin.com/in/franciscomanuellopezmartin/" target="_blank" rel="noopener" class="hover-target magnetic inline-flex items-center gap-2 border border-ink-600 px-8 py-4 rounded-full text-base text-bone-200 hover:border-brass-500 hover:text-brass-500 transition-colors">
+        <a href="https://www.linkedin.com/in/franciscomanuellopezmartin/" target="_blank" rel="noopener" class="hover-target magnetic relative z-10 inline-flex items-center gap-2 border border-ink-600 px-8 py-4 rounded-full text-base text-bone-200 hover:border-brass-500 hover:text-brass-500 transition-colors">
           LinkedIn ↗
         </a>
       </div>

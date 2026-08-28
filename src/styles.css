@@ -284,6 +284,21 @@ body {
   transition: width 1.4s cubic-bezier(.16,1,.3,1);
 }
 
+/* ---------- Capability cards ---------- */
+.capability-card {
+  background: #fbfaf8;
+  border: 1px solid #e6e3dc;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  transition: border-color .3s ease, transform .3s ease;
+}
+.capability-card:hover { border-color: #dad6cc; transform: translateY(-2px); }
+.capability-icon {
+  font-family: 'JetBrains Mono', monospace;
+  color: #ff5a1f;
+  flex-shrink: 0;
+}
+
 /* ---------- Tools ---------- */
 .tool-group {
   background: #fbfaf8;
@@ -413,6 +428,21 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+/* Smaller waveform accents reused in section headers/CTAs (same initWaveform
+   JS as the hero, just a different container). Hidden below 768px so they
+   don't add visual noise to already-tight mobile headers/CTAs. */
+.section-waveform {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  .section-waveform { display: none; }
 }
 
 /* ---------- Ambient effect: ascending code columns ---------- */

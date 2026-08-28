@@ -238,17 +238,22 @@
   }
 
   /* ---------- Ambient effect: waveform canvas ---------- */
-  (function initWaveform() {
-    const canvas = document.getElementById('waveformCanvas');
+  // Reused for the hero canvas and the smaller section accents below: same
+  // draw logic, only the target canvas and bar density/opacity change.
+  function initWaveform(canvasId, opts = {}) {
+    const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const barCountDesktop = opts.barCountDesktop || 48;
+    const barCountMobile = opts.barCountMobile || 22;
+    const alpha = opts.alpha || 0.12;
     let width, height, bars;
-    const barCount = window.innerWidth < 768 ? 22 : 48;
 
     function resize() {
       width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
       height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      const barCount = window.innerWidth < 768 ? barCountMobile : barCountDesktop;
       bars = Array.from({ length: barCount }, () => ({
         h: 0.15 + Math.random() * 0.5,
         target: 0.15 + Math.random() * 0.5,
@@ -257,8 +262,9 @@
     }
 
     function draw() {
+      if (!width || !height || !bars.length) return;
       ctx.clearRect(0, 0, width, height);
-      const gap = width / barCount;
+      const gap = width / bars.length;
       const barWidth = gap * 0.4;
       bars.forEach((bar, i) => {
         if (!reduceMotion) {
@@ -268,7 +274,7 @@
         const barHeight = bar.h * height * 0.5;
         const x = i * gap + gap / 2 - barWidth / 2;
         const y = height / 2 - barHeight / 2;
-        ctx.fillStyle = 'rgba(107, 107, 107, 0.12)';
+        ctx.fillStyle = `rgba(107, 107, 107, ${alpha})`;
         ctx.fillRect(x, y, barWidth, barHeight);
       });
     }
@@ -281,7 +287,12 @@
     window.addEventListener('resize', resize);
     resize();
     loop();
-  })();
+  }
+
+  initWaveform('waveformCanvas');
+  initWaveform('waveformOsint', { barCountDesktop: 20, barCountMobile: 12, alpha: 0.12 });
+  initWaveform('waveformExperiencia', { barCountDesktop: 16, barCountMobile: 10, alpha: 0.12 });
+  initWaveform('waveformContacto', { barCountDesktop: 24, barCountMobile: 14, alpha: 0.12 });
 
   /* ---------- Ambient effect: ascending code columns ---------- */
   (function initCodeRain() {
